@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'HakgyoansimMalgeunnalB';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimMalgeunnalB.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
+#canvases {
+  position: relative;
+}
+
+#main-canvas {
+  position: absolute;
+  width: 800px;
+  height: 575px;
+  border: 5px solid tomato;
+}
+
+#doctor-canvas {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 215px;
+  height: 110px;
+  border: 5px solid tomato;
+  font-family: 'HakgyoansimMalgeunnalB';
+}
+
+#patient-canvas {
+  position: absolute;
+  top: 20px;
+  left: 550px;
+  width: 235px;
+  height: 160px;
+  border: 5px solid tomato;
+}
+
+#input {
+  position: relative;
+  top: 600px;
+}

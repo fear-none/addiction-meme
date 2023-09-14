@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>심각한 중독입니다 짤 생성기</title>
+</head>
+<body>
+  <header>
+    <h1>심각한 중독입니다 짤 생성기</h1>
+  </header>
+
+  <main>
+    <div id="container">
+      <div id="canvases">
+        <canvas id="main-canvas"></canvas>
+        <canvas id="doctor-canvas"></canvas>
+        <canvas id="patient-canvas"></canvas>
+      </div>
+        
+      <div id="input">
+        <div id="doctor-div">
+          <label>의사</label><br>
+          <input type="text" value="치료가 필요할 정도로 심각한 '중독증'입니다.">
+          <button>입력하기</button>
+        </div>
+        <div id="patient-div">
+          <label>환자</label><br>
+          <input type="text" value="흥, 웃기는 소리.">
+          <button>입력하기</button>
+        </div>
+        <button id="download">내려받기</button>
+      </div>
+    </div>
+  </main>
+
+  <footer></footer>
+  <script src="app.js"></script>
+</body>
+</html>
