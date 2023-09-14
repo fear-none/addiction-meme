@@ -1,28 +1,24 @@
-const doctorDiv = document.getElementById("doctor-div");
-const doctorBtn = doctorDiv.querySelector("button");
-const patientDiv = document.getElementById("patient-div");
-const patientBtn = patientDiv.querySelector("button");
+const downloadBtn = document.getElementById("download");
+const doctorForm = document.getElementById("doctor-form");
+const patientForm = document.getElementById("patient-form");
 
-const mainCanvas = document.getElementById("main-canvas");
+const canvas = document.querySelector("canvas");
 // 140, 85
-const doctorCanvas = document.getElementById("doctor-canvas");
 // 665, 120
-const patientCanvas = document.getElementById("patient-canvas");
 
-const font = new FontFace('font', '');
+const ctx = canvas.getContext("2d");
+const MAIN_WIDTH = 800;
+const MAIN_HEIGHT = 575;
+canvas.width = MAIN_WIDTH;
+canvas.height = MAIN_HEIGHT;
 
-mainCanvas.width = 800;
-mainCanvas.height = 575;
+const DOCTOR_WIDTH = 240;
+const DOCTOR_HEIGHT = 110;
 
-const doctorCtx = doctorCanvas.getContext("2d");
-doctorCanvas.width = 215;
-doctorCanvas.height = 110;
-
-patientCanvas.width = 235;
-patientCanvas.height = 160;
+const PATIENT_WIDTH = 235;
+const PATIENT_HEIGHT = 170;
 
 window.onload = function() {
-  const ctx = mainCanvas.getContext("2d");
   const image = new Image();
   image.src = "addiction_blank.png";
   image.onload = function() {
@@ -31,32 +27,47 @@ window.onload = function() {
 }
 
 function onDoctorSays(event) {
-  const doctorText = doctorDiv.querySelector("input").value;
-  console.log(doctorText);
-
-  doctorCtx.font = "30px HakgyoansimMalgeunnalB";
-  doctorCtx.fillStyle = "black";
-  let doctorSays = wrapText(doctorCtx, doctorText, 0, 30, 205, 30);
+  event.preventDefault();
+  const doctorText = doctorForm.querySelector("input").value;
+  ctx.clearRect(10, 10, DOCTOR_WIDTH, DOCTOR_HEIGHT);
+  ctx.fillStyle = "white";
+  ctx.fillRect(10, 10, DOCTOR_WIDTH, DOCTOR_HEIGHT);
+  displayText(ctx);
+  let doctorSays = wrapText(ctx, doctorText, 20, 40, DOCTOR_WIDTH, 30);
   doctorSays.forEach(function(item) {
-    doctorCtx.fillText(item[0], item[1], item[2]);
+    ctx.fillText(item[0], item[1], item[2]);
   })
 }
 
 function onPatientSays(event) {
-  const patientText = patientDiv.querySelector("input").value;
-  console.log(patientText);
-  const ctx = patientCanvas.getContext("2d");
-  ctx.font = "30px HakgyoansimMalgeunnalB";
-  ctx.fillStyle = "black";
-  let patientSays = wrapText(ctx, patientText, 0, 30, 225, 30);
+  event.preventDefault();
+  const patientText = patientForm.querySelector("input").value;
+  ctx.clearRect(550, 40, PATIENT_WIDTH, PATIENT_HEIGHT);
+  ctx.fillStyle = "white";
+  ctx.fillRect(550, 40, PATIENT_WIDTH, PATIENT_HEIGHT);
+  displayText(ctx);
+  let patientSays = wrapText(ctx, patientText, 550, 40, PATIENT_WIDTH, 30);
   patientSays.forEach(function(item) {
     ctx.fillText(item[0], item[1], item[2]);
   })
 }
 
-doctorBtn.addEventListener("click", onDoctorSays);
-patientBtn.addEventListener("click", onPatientSays);
+function displayText(ctx) {
+  ctx.font = "30px HakgyoansimMalgeunnalB";
+  ctx.fillStyle = "black";
+}
 
+function onSaveClick() {
+  const url = canvas.toDataURL();
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "addiction_meme.png";
+  a.click();
+}
+
+doctorForm.addEventListener("submit", onDoctorSays);
+patientForm.addEventListener("submit", onPatientSays);
+downloadBtn.addEventListener("click", onSaveClick);
 
 // @description: wrapText wraps HTML canvas text onto a canvas of fixed width
 // @param ctx - the context for the canvas we want to wrap text on

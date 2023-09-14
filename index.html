@@ -13,24 +13,20 @@
 
   <main>
     <div id="container">
-      <div id="canvases">
-        <canvas id="main-canvas"></canvas>
-        <canvas id="doctor-canvas"></canvas>
-        <canvas id="patient-canvas"></canvas>
-      </div>
+      <canvas></canvas>
         
       <div id="input">
-        <div id="doctor-div">
+        <form id="doctor-form">
           <label>의사</label><br>
-          <input type="text" value="치료가 필요할 정도로 심각한 '중독증'입니다.">
+          <input type="text" maxlength="27" value="치료가 필요할 정도로 심각한 '중독증'입니다.">
           <button>입력하기</button>
-        </div>
-        <div id="patient-div">
+        </form>
+        <form id="patient-form">
           <label>환자</label><br>
-          <input type="text" value="흥, 웃기는 소리.">
+          <input type="text" maxlength="50" value="흥, 웃기는 소리.">
           <button>입력하기</button>
-        </div>
-        <button id="download">내려받기</button>
+        </form>
+        <button id="download">저장</button>
       </div>
     </div>
   </main>

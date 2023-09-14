@@ -5,37 +5,11 @@
   font-style: normal;
 }
 
-#canvases {
-  position: relative;
-}
-
-#main-canvas {
-  position: absolute;
+canvas {
   width: 800px;
   height: 575px;
-  border: 5px solid tomato;
 }
 
-#doctor-canvas {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 215px;
-  height: 110px;
-  border: 5px solid tomato;
-  font-family: 'HakgyoansimMalgeunnalB';
-}
-
-#patient-canvas {
-  position: absolute;
-  top: 20px;
-  left: 550px;
-  width: 235px;
-  height: 160px;
-  border: 5px solid tomato;
-}
-
-#input {
-  position: relative;
-  top: 600px;
+#doctor-form input[type="text"], #patient-form input[type="text"] {
+  width: 50%;
 }
